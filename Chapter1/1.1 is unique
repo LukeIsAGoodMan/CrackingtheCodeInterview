@@ -15,16 +15,16 @@ Class Solution{
 //O(N2)
 
 //method 2:
-
-mergesort(words)
+char[]content=str.toCharArray();
+java.util.Arrays.sort(content);
 int n= words.length;
 for(int i=1;i<n;i++){
-  if(words.charAt(i)==words.charAt(i+1)){
+  if(content.charAt(i)==content.charAt(i+1)){
     return false;
   }
 }
 return true;
-//mergesort takes O（nlogn), check takes O(n)
+// takes O（nlogn), check takes O(n)
 
 
 //solutin method 
