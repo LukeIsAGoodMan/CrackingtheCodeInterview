@@ -1,0 +1,42 @@
+//should ask interviewer whether the permutation is case sensitive
+//also we should consider the blank
+Class Solution{
+  Public boolean checkpermutation(string str1,string str2){
+    int checker[]=new int[128];
+    int n=str1.length;
+    int m=str2.length;
+    if(n!=m) return false;
+    for(int i=1;i<n;i++){
+      int val = str1.charAt(i);
+      checker[val]++;
+    }
+    for(int i=1; i<n;i++){
+      int val = str2.charAt(i);
+      checker[val]--;
+      //if(checker[val]<0){
+      //  return false;
+      //}
+      //in this way the following check part could be saved.
+    }
+    for (int i:checker) {
+      if (i != 0){
+        return false;
+      }
+    }
+    return true;
+  }
+}
+//this could be modified when
+
+//method 2 solution method first sort then 
+String sort(string str){
+  char[] cont = str.toCharArray();
+  java.util.Arrays.sort(cont);
+  return cont;
+}
+boolean checkper(string str1,string str2){
+  if(str1.length!=str2.length){
+    return false;
+  }
+  return sort(str1).equals(sort(str2));
+}
