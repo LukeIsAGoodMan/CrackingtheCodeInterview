@@ -1,0 +1,40 @@
+Class Solution{
+  public String URLify(String input, int n){
+    Arraylist<String> ret = new Arraylist<String>();
+    for(int i=1;i<n;i++){
+      if(input.charAt(i)!=" "){
+        ret.add(input.charAt(i));
+      }
+      else{
+        ret.add("%");
+        ret.add("2");
+        ret.add("0");
+      }
+    }
+    return ret;
+  }
+}
+
+//Solution 
+public void URLify(char [] input, int n){
+  int m=input.length;
+  int spacecount=0;
+  for(int i=0;i<m;i++){
+    if (input[i] = " "){
+      spacecount++;
+    }
+  }
+  int index = n + spacecount*2;
+  for(int i=n-1;i>=0;i--){
+    if(input[i]=" "){
+      input[index]=0;
+      input[index]=2;
+      input[index]=%;
+      index=index-3;
+    }
+    else{
+      input[index-1]=input[i];//note:here index-1 as the last of the array is index-1
+      index--;
+    }
+  }
+}
