@@ -1,0 +1,22 @@
+public boolean check(String str1,String str2){
+  boolean ret = false;
+  int m=str1.length;
+  int n=str2.length;
+  if(m==n){
+    int count = 0;
+    for(int i=0;i<n;i++){
+      if(!str1.charAt(i).isEqualTo(str2.charAt(i))  count++;
+    }
+    ret = (count<2);
+  }
+  else if(m=n+1){
+    ret=finddeference(str1,str2);
+  }
+  else if(m=n-1){
+    ret=finddeference(str2,str1);
+  }
+}
+
+public boolean finddeference(String list1,String list2){
+  
+}
