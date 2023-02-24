@@ -18,5 +18,48 @@ public boolean check(String str1,String str2){
 }
 
 public boolean finddeference(String list1,String list2){
-  
+  boolean output=false;
+  int mark=0;
+  for(int i=0;i<list2.length;i++){
+    if(list1.charAt(i)!=list2.charAt(i)){
+      mark=i;
+      break;
+    }
+  }
+  if(mark=0) output=true;//list1=pales list2=pale;
+  else if(mark!=0){
+    output = list1.substring(mark).isEqualTo(list2.substring(mark-1));
+  }
+  return output;
 }
+
+//solution
+1 boolean oneEditAway(String first, String second) {
+2   /* Length checks. */
+3   if (Math.abs(first.length() - second.length()) > 1) {
+4     return false;
+5   }
+6
+7   /* Get shorter and longer string.*/
+8   String sl =first.length()< second.length() ? first : second;
+9   String s2 =first.length()< second.length() ? second : first;
+10
+11  int indexl = 0;
+12  int index2 = 0;
+13  boolean foundDifference = false;
+14  while (index2 < s2.length() && indexl < sl.length()) {
+15    if (sl.charAt(indexl) != s2.charAt(index2)) {
+16    /* Ensure that this is the first difference found.*/
+17      if (foundDifference) return false;
+18      foundDifference = true;
+19
+20      if (sl.length() == s2.length()) {//On replace, move shorter pointer
+21        indexl++;
+22      }
+23     } else {
+24      indexl++; // If matching, move shorter pointer
+25     }
+26    index2++; // Always move pointer for longer string
+27   }
+28  return true;
+29 } 
