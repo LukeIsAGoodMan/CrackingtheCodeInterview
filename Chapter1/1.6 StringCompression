@@ -1,0 +1,71 @@
+public String StringCompress(String input){
+  char[] ca = input.toCharArray(); 
+  ArrayList<Character> ret = new ArrayList<Character>();
+  ret.add(ca[0]);
+  int count=1;
+  for(int i=1;i<ca.length;i++){
+    if(ca[i]==ca[i-1]){
+      count++;
+    }
+    else{
+      ret.add(count);
+      count=1;
+    }
+  }
+  String output= String.valueOf(ret);
+  return output.length() < input.length() ? output:input;
+}
+//solution
+1 String compress(String str) {
+2   StringBuilder compressed= new StringBuilder();
+3   int countConsecutive = 0;
+4   for (int i= 0; i < str.length(); i++) {
+5     countConsecutive++;
+6
+7     /* If next character is different than current, append this char to result.*/
+8     if (i + 1 >= str.length() I I str.charAt(i) != str.charAt(i + 1)) {
+9       compressed.append(str.charAt(i));
+10      compressed.append(countConsecutive);
+11      countConsecutive = 0;
+12    }
+13  }
+14  return compressed.length() < str.length() ? compressed.toString() : str;
+15 }
+///solution
+Instead, we can check in advance. This will be more optimal in cases where we don't have a large number of
+repeating characters. It will avoid us having to create a string that we never use. The downside of this is that
+it causes a second loop through the characters and also adds nearly duplicated code.
+1 String compress(String str) {
+2   /* Check final length and return input string if it would be longer. */
+3   int finallength = countCompression(str);
+4   if (finallength >= str.length()) return str;
+5
+6   StringBuilder compressed= new StringBuilder(finalLength); // initial capacity
+7   int countConsecutive = 0;
+8   for (int i= 0; i < str.length(); i++) {
+9     countConsecutive++;
+10
+11    /* If next character is different than current, append this char to result.*/
+12    if (i + 1 >= str.length() I I str.charAt(i) != str.charAt(i + 1)) {
+13      compressed.append(str.charAt(i));
+14      compressed.append(countConsecutive);
+15      countConsecutive = 0;
+16    }
+17   }
+18  return compressed.toString();
+19 }
+20
+21 int countCompression(String str) {
+22  int compressedlength = 0;
+23  int countConsecutive = 0;
+24  for (int i= 0; i < str.length(); i++) {
+25    countConsecutive++;
+26
+27    /* If next character is different than current, increase the length.*/
+28    if (i + 1 >= str.length() I I str.charAt(i) != str.charAt(i + 1)) {
+29      compressedlength += 1 + String.valueOf(countConsecutive).length();
+30      countConsecutive = 0;
+31    }
+32  }
+33  return compressedlength;
+34 } 
