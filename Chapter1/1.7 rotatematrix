@@ -1,0 +1,37 @@
+//clockwise of anticlockwise
+public void rotatematrix(int[][] input){
+  int n = input.length;
+  for( int i=0;i<n/2;i++){
+    for (int j=i;j<n-1-i;j++){
+      int[] temp = new int[n-1-2i];
+      temp[j-i]=input[i][j];
+      input[i][j]=input[n-j-1][i];
+      input[n-j-1][i]=input[n-i-1][n-j-1];
+      input[n-i-1][n-j-1]=input[j][n-i-1];
+      input[j][n-i-1]=temp[j];
+    }
+  }
+}
+
+//solution
+boolean rotate(int[][] matrix) {
+  if (matrix.length== 0 || matrix.length != matrix[0].length) return false;
+  int n = matrix.length;
+  for (int layer = 0; layer < n / 2; layer++) {
+    int first= layer; //i
+    int last= n - 1 - layer; //n-1-i
+    for(int i = first; i < last; i++) {
+      int offset = i - first;// j-i
+      int top= matrix[first][i]; // save top i j
+      // left -> top
+      matrix[first][i]= matrix[last-offset][first];//i j = n-1-j i
+      // bottom -> left
+      matrix[last-offset][first]=matrix[last][last offset]// n-1-j i = n-1-i n-1-j
+      // right -> bottom
+      matrix[last][last - offset] =matrix[i][last]//n-1-i n-1-j = j n-1-i
+      // top -> right
+      matrix[i][last]= top; // right<- saved top 
+    }
+  }
+  return true;
+}
