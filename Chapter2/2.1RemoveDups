@@ -1,0 +1,35 @@
+Class Main{
+  void RemoveDups(LinkedListNode head){
+    ArrayList<Integer> store =  new ArrayList<Integer>();
+    LinkedListNode start = new LinkedListNode();
+    start.next=head;
+    while(start.next!=null){
+      if(!store.contains(start.val){
+        store.add(start.val);
+      }
+      else{
+        start.next=start.next.next;
+      }
+      start=start.next;
+    }
+  }
+}
+//if no buffer is allowed
+Class Main{
+  void RemoveDups(LinkedListNode head){
+    LinkedListNode start = new LinkedListNoed();
+    start.next=head;
+    while(start.next!=null){
+      LinkedListNode runner = start;
+      while(runner.next!=null){
+        if(runner.next.val==start.val){
+          runner.next=runner.next.next;
+        }
+        else{
+          runner=runner.next;
+        }
+      }
+      start=start.next;
+    }
+  }
+}
